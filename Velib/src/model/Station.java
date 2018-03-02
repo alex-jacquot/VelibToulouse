@@ -1,30 +1,34 @@
+package model;
 
-public class StaticStation {
+public class Station {
 	private double number;
 	private String name;
 	private String address;
-	private double latitude;
-	private double longitude;
+	private Position position;
+	public boolean isState() {
+		return state;
+	}
 
-	public StaticStation(double number, String name, String address, double latitude, double longitude) {
+	private boolean state;
+
+	public Station(double number, String name, String address, Position position, boolean state) {
 		super();
 		this.number = number;
 		this.name = name;
 		this.address = address;
-		this.latitude = latitude;
-		this.longitude = longitude;
+		this.position = position;
+		this.state = state;
 	}
 
 	@Override
 	public String toString() {
-		return "StaticStation [number=" + number + ", name=" + name + ", address=" + address + ", latitude=" + latitude
-				+ ", longitude=" + longitude + "]";
+		return "Station [number=" + number + ", name=" + name  + ", pos=" + position + ", needsCharging="+state+  "]";
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof StaticStation) {
-			StaticStation ss = (StaticStation) obj;
+		if (obj instanceof Station) {
+			Station ss = (Station) obj;
 			return ss.getNumber() == this.getNumber();
 		}
 		return false;
@@ -43,11 +47,11 @@ public class StaticStation {
 	}
 
 	public double getLatitude() {
-		return latitude;
+		return position.getLatitude();
 	}
 
 	public double getLongitude() {
-		return longitude;
+		return position.getLongitude();
 	}
 
 }
