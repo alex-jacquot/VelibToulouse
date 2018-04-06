@@ -1,6 +1,7 @@
 
 /**
  * Request Manager: handles all HTTP requests and Files creating and reading. Doesn't "JSONize" all the manipulated objects 
+	TODO: File too big
  */
 
 import java.io.BufferedReader;
@@ -25,7 +26,9 @@ import java.nio.file.Paths;
 
 import org.json.JSONArray;
 
-public class RequestManager {
+import model.Position;
+
+public class IORequestManager {
 
 	/**
 	 * 
@@ -77,6 +80,11 @@ public class RequestManager {
 		printTo(result.toString(), "data/dynamics.json");
 	}
 
+	/**
+	 * Gets the content of the local JSON file under a String format
+	 * 
+	 * @return
+	 */
 	public static String getDynamicStations() {
 		String jsonString = null;
 		try {
@@ -102,6 +110,34 @@ public class RequestManager {
 		return jsonString;
 	}
 
+	/**
+	 * Gets the Google Maps API directions path between 2 points
+	 * 
+	 * @return The JSON data containing the path between 2 points
+	 */
+	/*
+	 * public static String getGooglePath(Position origin, Position destination) {
+	 * String requestURL = new String(
+	 * "https://maps.googleapis.com/maps/api/directions/json?origin=" + origin +
+	 * "&destination="+ destination +
+	 * "&alternatives=false&key=AIzaSyAG3bhdapKXj9TpHlic9DgluyQ0Be_Hw5A");
+	 * 
+	 * StringBuilder result = new StringBuilder(); URL url = new URL(requestURL);
+	 * HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+	 * conn.setRequestMethod("GET"); BufferedReader rd = new BufferedReader(new
+	 * InputStreamReader(conn.getInputStream())); String line; while ((line =
+	 * rd.readLine()) != null) { result.append(line); } rd.close();
+	 * printTo(result.toString(), "data/dynamics.json"); return line; }
+	 */
+
+	/**
+	 * Returns the file content under the form of a String with proper encoding
+	 * 
+	 * @param path
+	 * @param encoding
+	 * @return
+	 * @throws IOException
+	 */
 	static String readFile(String path, Charset encoding) throws IOException {
 		byte[] encoded = Files.readAllBytes(Paths.get(path));
 		return new String(encoded, encoding);
@@ -112,6 +148,12 @@ public class RequestManager {
 			writer.write(content);
 		}
 	}
+	
+	/*public static String buildURL() {
+		String result = "https://maps.googleapis.com/maps/api/staticmap?center=43.60,1.44&zoom=12.5&size=630x600&maptype=roadmap&key=AIzaSyCcuKRt6PkePi0QmKBFR0i3G-DvXz0ToRg&format=jpg";
+		
+		return result;
+	}*/
 
 	public static void main(String[] args) {
 		try {

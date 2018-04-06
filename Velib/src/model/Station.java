@@ -5,11 +5,7 @@ public class Station {
 	private String name;
 	private String address;
 	private Position position;
-	public boolean isState() {
-		return state;
-	}
-
-	private boolean state;
+	private boolean state;//Needs charging
 
 	public Station(double number, String name, String address, Position position, boolean state) {
 		super();
@@ -22,9 +18,12 @@ public class Station {
 
 	@Override
 	public String toString() {
-		return "Station [number=" + number + ", name=" + name  + ", pos=" + position + ", needsCharging="+state+  "]";
+		return "Station [number=" + number + ", name=" + name + ", pos=" + position + ", needsCharging=" + state + "]";
 	}
 
+	/**
+	 * A station can be identified by a key
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Station) {
@@ -54,4 +53,7 @@ public class Station {
 		return position.getLongitude();
 	}
 
+	public boolean getState() {
+		return state;
+	}
 }

@@ -1,2 +1,8 @@
 /model/
 /JSONReader.class
+/FilterStation.class
+/view/
+/StationHandler.class
+/IORequestManager.class
+/GMapRequestManager.class
+/request/
