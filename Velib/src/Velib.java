@@ -2,6 +2,7 @@
 /*Velib.java:
  * entry point of the program**/
 
+import request.IORequestManager;
 import java.io.IOException;
 import java.util.ArrayList;
 

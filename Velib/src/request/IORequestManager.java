@@ -1,3 +1,5 @@
+package request;
+
 
 /**
  * Request Manager: handles all HTTP requests and Files creating and reading. Doesn't "JSONize" all the manipulated objects 
