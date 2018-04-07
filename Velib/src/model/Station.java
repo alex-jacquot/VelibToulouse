@@ -5,7 +5,11 @@ public class Station {
 	private String name;
 	private String address;
 	private Position position;
-	private boolean state;//Needs charging
+	private boolean state;// Needs charging
+
+	public Position getPosition() {
+		return position;
+	}
 
 	public Station(double number, String name, String address, Position position, boolean state) {
 		super();

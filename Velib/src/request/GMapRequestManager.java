@@ -17,13 +17,23 @@ public class GMapRequestManager {
 	 * Gets the Google Maps API directions path between 2 points
 	 * 
 	 * @return The JSON data containing the path between 2 points
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 
 	public static String getGooglePath(Position origin, Position destination) throws IOException {
 		StationHandler sh = StationHandler.getInstance();
-		String requestURL = new String("https://maps.googleapis.com/maps/api/directions/json?origin=" + origin
-				+ "&destination=" + destination + "&alternatives=false&key=AIzaSyAG3bhdapKXj9TpHlic9DgluyQ0Be_Hw5A");
+
+		String requestURL = new String(
+				"https://maps.googleapis.com/maps/api/directions/json?origin=" + origin + "&destination=" + destination
+						+ "&alternatives=false&key=AIzaSyAG3bhdapKXj9TpHlic9DgluyQ0Be_Hw5A&waypoints=");
+		for (Station s : sh.getUncharged()) {
+			if (!s.getPosition().equals(origin) && !s.getPosition().equals(destination)) {
+				requestURL += s.getPosition() + "|";
+			}
+		}
+
+		requestURL = requestURL.substring(0, requestURL.length() - 1);
+		System.out.println(requestURL);
 
 		StringBuilder result = new StringBuilder();
 		URL url = new URL(requestURL);
@@ -38,16 +48,20 @@ public class GMapRequestManager {
 		IORequestManager.printTo(result.toString(), "data/directions.json");
 		return line;
 	}
-	
+
+	/**
+	 * Generates the request URL for the static map with all uncharged stations
+	 * 
+	 * @return
+	 */
 	public static String getStaticMap() {
 		StationHandler sh = StationHandler.getInstance();
 		String imageUrl = "https://maps.googleapis.com/maps/api/staticmap?center=43.60,1.44&zoom=13&size=630x600&maptype=roadmap&key=AIzaSyCcuKRt6PkePi0QmKBFR0i3G-DvXz0ToRg&format=jpg";
-		for(Station s: sh.filterStationsByUncharged()) {
-			imageUrl += "&markers=color:green%7Clabel:S%7C"+ s.getLatitude() + "," + s.getLongitude();
+		for (Station s : sh.getUncharged()) {
+			imageUrl += "&markers=color:green%7Clabel:S%7C" + s.getLatitude() + "," + s.getLongitude();
 		}
 		System.out.println(imageUrl);
 		return imageUrl;
-		
 	}
 
 }

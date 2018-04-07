@@ -28,7 +28,17 @@ public class Position {
 	@Override
 	public String toString() {
 
-		return "(" + latitude + "," + longitude + ")";
+		return latitude + "," + longitude;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Position) {
+			Position s = (Position) obj;
+			return s.getLatitude() == this.latitude;
+		}
+		return super.equals(obj);
+	}
+	
 
 }

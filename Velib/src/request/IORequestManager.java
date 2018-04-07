@@ -133,11 +133,6 @@ public class IORequestManager {
 		}
 	}
 	
-	/*public static String buildURL() {
-		String result = "https://maps.googleapis.com/maps/api/staticmap?center=43.60,1.44&zoom=12.5&size=630x600&maptype=roadmap&key=AIzaSyCcuKRt6PkePi0QmKBFR0i3G-DvXz0ToRg&format=jpg";
-		
-		return result;
-	}*/
 
 	public static void main(String[] args) {
 		try {

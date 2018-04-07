@@ -10,18 +10,19 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import model.StationHandler;
 import request.GMapRequestManager;
 
 public class MainWindow {
-
-	
 
 	public static void create() throws IOException {
 		JFrame test = new JFrame("Google Maps");
 
 		try {
-			String imageUrl = GMapRequestManager.getStaticMap();
-			//String imageUrl = "https://maps.googleapis.com/maps/api/staticmap?center=43.60,1.44&zoom=11&size=630x600&maptype=roadmap&markers=color:green%7Clabel:S%7C43.608951,1.4410035&markers=color:green%7Clabel:S%7C43.6089519,1.44100&key=AIzaSyCcuKRt6PkePi0QmKBFR0i3G-DvXz0ToRg&format=jpg";
+			String imageUrl = GMapRequestManager.getStaticMap();// URL OF THE STATIC MAP
+			StationHandler sh = StationHandler.getInstance();
+			GMapRequestManager.getGooglePath(sh.getUncharged().get(0).getPosition(),sh.getUncharged().get(1).getPosition());//terrible but I ain't got time to do better
+
 			String destinationFile = "image.jpg";
 			String str = destinationFile;
 			URL url = new URL(imageUrl);
@@ -43,7 +44,7 @@ public class MainWindow {
 		}
 
 		test.add(new JLabel(new ImageIcon(
-				(new ImageIcon("image.jpg")).getImage().getScaledInstance(730, 600, java.awt.Image.SCALE_SMOOTH))));
+				(new ImageIcon("image.jpg")).getImage().getScaledInstance(630, 600, java.awt.Image.SCALE_SMOOTH))));
 
 		test.setVisible(true);
 		test.pack();

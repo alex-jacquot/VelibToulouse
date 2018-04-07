@@ -30,7 +30,7 @@ public class StationHandler {
 		return stationList;
 	}
 
-	public ArrayList<Station> filterStationsByUncharged() {
+	public ArrayList<Station> getUncharged() {
 		ArrayList<Station> result = new ArrayList<>();
 		for (Station s : this.stationList) {
 			if (s.getState()) {
@@ -67,4 +67,6 @@ public class StationHandler {
 		furthestStations.add(sMin);
 		return furthestStations;
 	}
+	
+	
 }
