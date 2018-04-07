@@ -112,25 +112,7 @@ public class IORequestManager {
 		return jsonString;
 	}
 
-	/**
-	 * Gets the Google Maps API directions path between 2 points
-	 * 
-	 * @return The JSON data containing the path between 2 points
-	 */
-	/*
-	 * public static String getGooglePath(Position origin, Position destination) {
-	 * String requestURL = new String(
-	 * "https://maps.googleapis.com/maps/api/directions/json?origin=" + origin +
-	 * "&destination="+ destination +
-	 * "&alternatives=false&key=AIzaSyAG3bhdapKXj9TpHlic9DgluyQ0Be_Hw5A");
-	 * 
-	 * StringBuilder result = new StringBuilder(); URL url = new URL(requestURL);
-	 * HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-	 * conn.setRequestMethod("GET"); BufferedReader rd = new BufferedReader(new
-	 * InputStreamReader(conn.getInputStream())); String line; while ((line =
-	 * rd.readLine()) != null) { result.append(line); } rd.close();
-	 * printTo(result.toString(), "data/dynamics.json"); return line; }
-	 */
+
 
 	/**
 	 * Returns the file content under the form of a String with proper encoding

@@ -1,3 +1,4 @@
+package model;
 
 /**
  * StationHandler.java
@@ -9,8 +10,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import model.Station;
 
 public class StationHandler {
 
@@ -31,9 +30,9 @@ public class StationHandler {
 		return stationList;
 	}
 
-	public ArrayList<Station> filterStationsByUncharged(ArrayList<Station> alS) {
+	public ArrayList<Station> filterStationsByUncharged() {
 		ArrayList<Station> result = new ArrayList<>();
-		for (Station s : alS) {
+		for (Station s : this.stationList) {
 			if (s.getState()) {
 				result.add(s);
 			}

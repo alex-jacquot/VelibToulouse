@@ -7,11 +7,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import model.Station;
+import model.StationHandler;
 import view.MainWindow;
 
 public class Velib {
 
-	public static int MINIMUM_BIKES = 4;
+	public static int MINIMUM_BIKES = 1;
 
 	public static void main(String[] args) {
 		try {
@@ -26,7 +27,7 @@ public class Velib {
 			//System.out.println(sh.getStationsList());// Put all info in an ArrayList for further manipulation
 			// System.out.println(stations.size());
 			
-			ArrayList<Station> filteredStations = StationHandler.getInstance().filterStationsByUncharged(sh.getStationsList());
+			ArrayList<Station> filteredStations = StationHandler.getInstance().filterStationsByUncharged();
 			System.out.println(filteredStations);
 			/* System.out.println(filteredStations.size()); */
 
