@@ -1,3 +1,4 @@
+package main;
 
 /*Velib.java:
  * entry point of the program**/
@@ -6,6 +7,7 @@ import request.IORequestManager;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import model.JSONReader;
 import model.Station;
 import model.StationHandler;
 import view.MainWindow;

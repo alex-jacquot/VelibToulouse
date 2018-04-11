@@ -7,7 +7,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
+import model.JSONReader;
 import model.Position;
 import model.Station;
 import model.StationHandler;
@@ -46,20 +48,26 @@ public class GMapRequestManager {
 		}
 		rd.close();
 		IORequestManager.printTo(result.toString(), "data/directions.json");
-		return line;
+		return IORequestManager.readFile("data/directions.json", StandardCharsets.UTF_8);
 	}
 
 	/**
 	 * Generates the request URL for the static map with all uncharged stations
 	 * 
 	 * @return
+	 * @throws IOException
 	 */
-	public static String getStaticMap() {
+	public static String getStaticMap() throws IOException {
 		StationHandler sh = StationHandler.getInstance();
+		String dynamicPath = GMapRequestManager.getGooglePath(sh.getUncharged().get(0).getPosition(),
+				sh.getUncharged().get(1).getPosition());// terrible but I ain't got time to do better
+
 		String imageUrl = "https://maps.googleapis.com/maps/api/staticmap?center=43.60,1.44&zoom=13&size=630x600&maptype=roadmap&key=AIzaSyCcuKRt6PkePi0QmKBFR0i3G-DvXz0ToRg&format=jpg";
 		for (Station s : sh.getUncharged()) {
 			imageUrl += "&markers=color:green%7Clabel:S%7C" + s.getLatitude() + "," + s.getLongitude();
 		}
+		imageUrl += "&path=enc%3A" + JSONReader.readRoutes(dynamicPath);
+
 		System.out.println(imageUrl);
 		return imageUrl;
 	}

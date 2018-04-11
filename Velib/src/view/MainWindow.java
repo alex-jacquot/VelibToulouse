@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import model.StationHandler;
+import model.JSONReader;
 import request.GMapRequestManager;
 
 public class MainWindow {
@@ -19,10 +20,10 @@ public class MainWindow {
 		JFrame test = new JFrame("Google Maps");
 
 		try {
+			
+			
 			String imageUrl = GMapRequestManager.getStaticMap();// URL OF THE STATIC MAP
-			StationHandler sh = StationHandler.getInstance();
-			GMapRequestManager.getGooglePath(sh.getUncharged().get(0).getPosition(),sh.getUncharged().get(1).getPosition());//terrible but I ain't got time to do better
-
+			
 			String destinationFile = "image.jpg";
 			String str = destinationFile;
 			URL url = new URL(imageUrl);

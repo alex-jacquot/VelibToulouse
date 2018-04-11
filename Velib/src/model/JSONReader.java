@@ -1,3 +1,4 @@
+package model;
 
 /*JSONReader especially designed for reading */
 
@@ -6,8 +7,7 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import model.Position;
-import model.Station;
+import main.Velib;
 
 public class JSONReader {
 	public static ArrayList<Station> readStation(String json) {
@@ -32,7 +32,18 @@ public class JSONReader {
 		return result;
 	}
 
-	public static ArrayList<Station> readRoutes(String json) {
-		return null;
+	public static String readRoutes(String json) {
+		String result = "";
+		// JSONArray jsonArray = new JSONArray(json);
+		JSONObject globalJSON = new JSONObject(json);
+		JSONArray routes = globalJSON.getJSONArray("routes");
+		JSONObject polyline = routes.getJSONObject(0).getJSONObject("overview_polyline");
+		String points = polyline.getString("points");
+		// JSONObject routes = jsonArray.getJSONObject(0);
+		System.out.println("Global:" + globalJSON.toString());
+		System.out.println("Routes:" + routes);
+		System.out.println("Polyline:" + polyline);
+		System.out.println("Points:" + points);
+		return points;
 	}
 }
