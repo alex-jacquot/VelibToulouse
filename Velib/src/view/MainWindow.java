@@ -17,7 +17,7 @@ import request.GMapRequestManager;
 public class MainWindow {
 
 	public static void create() throws IOException {
-		JFrame test = new JFrame("Google Maps");
+		JFrame test = new JFrame("Stations de Vélib chargées");
 
 		try {
 			
@@ -26,6 +26,7 @@ public class MainWindow {
 			
 			String destinationFile = "image.jpg";
 			String str = destinationFile;
+			System.out.println("Launching API call on " + imageUrl);
 			URL url = new URL(imageUrl);
 			InputStream is = url.openStream();
 			OutputStream os = new FileOutputStream(destinationFile);

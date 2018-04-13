@@ -34,13 +34,14 @@ public class Velib {
 			System.out.println("Filtering uncharged stations..");
 			ArrayList<Station> filteredStations = StationHandler.getInstance().getUncharged();
 			//System.out.println(filteredStations);
-			System.out.println(filteredStations.size() + " stations currently empty");
+			System.out.println(filteredStations.size() + " stations currently empty\n");
 
-			System.out.println("API call from Google Maps Directions API..");
+			System.out.println("API call from Google Maps Directions API..\n");
 			ArrayList<Station> furthestStations = StationHandler.getInstance().filterFurthestStations();
 			System.out.println("API call generating the Google Static Map..");
-			System.out.println("Rendering..");
+			
 			MainWindow.create();// Creation of the main window containing the google image
+			System.out.println("Rendering..");
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

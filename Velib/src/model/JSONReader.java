@@ -40,10 +40,10 @@ public class JSONReader {
 		JSONObject polyline = routes.getJSONObject(0).getJSONObject("overview_polyline");
 		String points = polyline.getString("points");
 		// JSONObject routes = jsonArray.getJSONObject(0);
-		System.out.println("Global:" + globalJSON.toString());
-		System.out.println("Routes:" + routes);
-		System.out.println("Polyline:" + polyline);
-		System.out.println("Points:" + points);
+		//System.out.println("Global:" + globalJSON.toString());
+		//System.out.println("Routes:" + routes);
+		//System.out.println("Polyline:" + polyline);
+		//System.out.println("Points:" + points);
 		return points;
 	}
 }

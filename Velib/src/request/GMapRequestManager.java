@@ -35,7 +35,7 @@ public class GMapRequestManager {
 		}
 
 		requestURL = requestURL.substring(0, requestURL.length() - 1);
-		System.out.println(requestURL);
+		//System.out.println(requestURL);
 
 		StringBuilder result = new StringBuilder();
 		URL url = new URL(requestURL);
@@ -68,7 +68,7 @@ public class GMapRequestManager {
 		}
 		imageUrl += "&path=enc%3A" + JSONReader.readRoutes(dynamicPath);
 
-		System.out.println(imageUrl);
+		//System.out.println(imageUrl);
 		return imageUrl;
 	}
 
